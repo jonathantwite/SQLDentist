@@ -1,4 +1,4 @@
-# sql-dentist
+# SQL at the Dentist
 
 ## Build Setup
 
