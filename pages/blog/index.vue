@@ -3,8 +3,8 @@
     <h1>Blog Posts</h1>
     <ul>
       <li v-for="article of articles" :key="article.slug">
-        <NuxtLink :to="{ name: 'blog', params: { slug: article.slug } }">
-          <img :src="article.img" />
+        <NuxtLink :to="article.path">
+          <img :src="article.img">
           <div>
             <h2>{{ article.title }}</h2>
             <!-- <p>by {{ article.author.name }}</p> -->
@@ -23,7 +23,6 @@ export default {
             .only(['title', 'description', 'img', 'slug', 'author'])
             .sortBy('createdAt', 'asc')
             .fetch();
-        console.log(articles);
         return {
             articles
         };
