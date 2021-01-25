@@ -3,7 +3,7 @@
     <h1>Blog Posts</h1>
     <ul>
       <li v-for="article of articles" :key="article.slug">
-        <NuxtLink :to="article.path">
+        <NuxtLink :to="'/blog/' + article.slug">
           <img :src="article.img">
           <div>
             <h2>{{ article.title }}</h2>
