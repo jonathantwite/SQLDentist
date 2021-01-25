@@ -1,7 +1,7 @@
 <template>
-  <article>
-    <nuxt-content :document="page" />
-  </article>
+    <article>
+        <nuxt-content :document="page" />
+    </article>
 </template>
 
 <script>

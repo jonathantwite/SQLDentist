@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <HeaderBar />
-    <Nuxt />
-  </div>
+    <b-container>
+        <HeaderBar />
+
+        <Nuxt />
+    </b-container>
 </template>
-
-<style>
-
-</style>
