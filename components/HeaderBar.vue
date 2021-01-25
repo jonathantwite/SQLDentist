@@ -6,8 +6,8 @@
 
     <b-navbar-toggle target="nav-collapse" />
     <b-navbar-nav>
-      <b-nav-item href="#">
-        Link
+      <b-nav-item href="/blog/welcome">
+        Blog
       </b-nav-item>
       <b-nav-item href="#" disabled>
         Disabled
