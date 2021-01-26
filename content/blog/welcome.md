@@ -1,9 +1,7 @@
 ---
 title: Welcome
-description: Welcome with some SQL.
----
-# Welcome
 
+---
 Hello and welcome.
 <!--more-->
 This is some SQL
