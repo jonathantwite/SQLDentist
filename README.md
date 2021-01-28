@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ccbcbba2-f46a-4058-9a41-299bf8eb85ba/deploy-status)](https://app.netlify.com/sites/sql-at-the-dentist/deploys)
+
 # SQL at the Dentist
 
 ## Build Setup
