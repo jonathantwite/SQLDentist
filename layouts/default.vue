@@ -11,7 +11,7 @@
 <style>
 .notebook-paper {
   width: 100%;
-  height: 1109px;
+  min-height: 100vh;
   background: linear-gradient(to bottom, white 29px, rgba(0, 176, 215, 0.1) 1px);
   background-size: 100% 30px;
   position: relative;
@@ -23,14 +23,12 @@
   -ms-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
   -o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
-
-  z-index: -2;
+  z-index: 0;
 }
 .notebook-paper:before {
   content: "";
   display: block;
   position: absolute;
-  z-index: -10;
   top: 0;
   left: 140px;
   height: 100%;
@@ -52,13 +50,13 @@
   transition: all .3s ease-in-out;
 }
 .page::before {
-  z-index: -1;
   transform: rotate(1deg);
+  z-index: -1;
 }
 
 .page::after {
-  z-index: -2;
   transform: rotate(2deg);
+  z-index: -2;
 }
 
 .page {
