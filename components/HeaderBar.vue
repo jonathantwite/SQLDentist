@@ -18,6 +18,7 @@
                 <NuxtLink class="p-2 text-muted" to="/Guide">Guide</NuxtLink>
                 <NuxtLink class="p-2 text-muted" to="/blog">Blog</NuxtLink>
                 <NuxtLink class="p-2 text-muted" to="/code">Help Yourself</NuxtLink>
+                <NuxtLink class="p-2 text-muted" to="/sweet-treats">Sweet Treats</NuxtLink>
             </nav>
         </div>
     </div>
