@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
 .notebook-paper {
   width: 100%;
   min-height: 100vh;
@@ -25,39 +25,18 @@
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
   z-index: 0;
   padding: 0 2px;
-}
-.notebook-paper:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 140px;
-  height: 100%;
-  width: 1px;
-  background: #db4034;
-  opacity: 0.3;
-}
 
-.page::before,
-.page::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  box-shadow: 0 5px 14px rgba(0,0,0,.7);
-  background: #fff;
-  transition: all .3s ease-in-out;
-}
-.page::before {
-  transform: rotate(1deg);
-  z-index: -1;
-}
-
-.page::after {
-  transform: rotate(2deg);
-  z-index: -2;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 140px;
+    height: 100%;
+    width: 1px;
+    background: #db4034;
+    opacity: 0.3;
+  }
 }
 
 .page {
@@ -69,5 +48,28 @@
   border-top: 1px solid #eee;
   margin-top: 3rem;
   box-shadow: 0 3px 7px rgba(0,0,0,.7);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 5px 14px rgba(0,0,0,.7);
+    background: #fff;
+    transition: all .3s ease-in-out;
+  }
+
+  &::before {
+    transform: rotate(1deg);
+    z-index: -1;
+  }
+
+  &::after {
+    transform: rotate(2deg);
+    z-index: -2;
+  }
 }
 </style>
