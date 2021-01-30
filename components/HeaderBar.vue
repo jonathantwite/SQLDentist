@@ -2,12 +2,12 @@
     <div>
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-3 pt-1"></div>
-                <div class="col-5 text-center">
+                <div class="d-none d-md-block col-md-3 pt-1"></div>
+                <div class="col-12 col-md-5 text-center">
                     <NuxtLink class="blog-header-logo text-dark" to="/blog">SQL at the Dentist</NuxtLink>
                     <p class="lead mt-3 mb-0">Microsoft SQL Server without pulling your teeth out</p>
                 </div>
-                <div class="col-3 d-flex justify-content-end align-items-center"></div>
+                <div class="d-none d-md-block col-md-3 d-flex justify-content-end align-items-center"></div>
             </div>
         </header>
 

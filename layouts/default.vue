@@ -24,6 +24,7 @@
   -o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), 0px 0px 6px rgba(0, 0, 0, 0.2);
   z-index: 0;
+  padding: 0 2px;
 }
 .notebook-paper:before {
   content: "";
