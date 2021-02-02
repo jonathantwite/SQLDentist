@@ -1,0 +1,21 @@
+// Customisations
+$font-family-base: 'Open Sans', sans-serif;
+$headings-font-family: 'Prata', serif;
+
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Optional
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+
+@import 'bootstrap-vue/src/index.scss';
+
+// Overrides
+.lead {
+    font-family: $headings-font-family;
+}

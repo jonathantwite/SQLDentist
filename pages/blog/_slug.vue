@@ -26,7 +26,7 @@ export default {
             return dayjs(this.createdAt).format('dddd D MMMM YYYY');
         }
     },
-    mounted(){
+    mounted() {
         Prism.highlightAll();
     }
 };
