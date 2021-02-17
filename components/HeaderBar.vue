@@ -4,7 +4,8 @@
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="d-none d-md-block col-md-3 pt-1"></div>
                 <div class="col-12 col-md-5 text-center">
-                    <NuxtLink class="blog-header-logo text-dark" to="/blog">SQL at the Dentist</NuxtLink>
+                    <!-- <NuxtLink class="blog-header-logo text-dark" to="/blog">SQL at the Dentist</NuxtLink> -->
+                    <h1 class="blog-header-logo text-dark">SQL at the Dentist</h1>
                     <p class="lead mt-3 mb-0">Microsoft SQL Server without pulling your teeth out</p>
                 </div>
                 <div class="d-none d-md-block col-md-3 d-flex justify-content-end align-items-center"></div>
