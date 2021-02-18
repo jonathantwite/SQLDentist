@@ -12,7 +12,7 @@
 
         <p>The <NuxtLink to="/code">Help Yourself</NuxtLink> is a collection of useful snippets, often borrowed from elsewhere, collated into one place.  The <NuxtLink to="/">Sweet Treats</NuxtLink> are things I have discovered that are possible, but probably not wise to do.</p>
 
-        <h2>Latest from the blog</h2>
+        <h2 class="mb-4">Latest from the blog</h2>
         <blog-post-listings :articles="blogPosts"></blog-post-listings>
     </div>
 </template>

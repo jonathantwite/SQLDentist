@@ -25,6 +25,8 @@ export default {
         }
     },
     mounted() {
+        document.getElementsByClassName('language-text')
+            .forEach(e=>e.classList.remove('line-numbers'));
         Prism.highlightAll();
     }
 };
@@ -50,7 +52,6 @@ pre[class*="language-"].line-numbers > code {
   left: -3.8em;
   width: 3em; /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
-  /* border-right: 1px solid #999; */
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -98,19 +99,21 @@ pre[class*="language-"].line-numbers > code {
 }
 
 .result-grid {
+    $table-border-thickness: 3px;
+    
     table {
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        border: 3px solid rgb(245, 242, 240);
+        border: $table-border-thickness solid rgb(245, 242, 240);
         width: 100%;
 
         td, th {
-            padding: 5px;
+            padding: 5px calc(1rem - #{$table-border-thickness});
             border: 1px solid rgb(245, 242, 240);
         }
 
         th {
             border-color: rgb(245, 242, 240);
-            border-width: 3px;
+            border-width: $table-border-thickness;
             background-color: rgb(245, 242, 240);
         }
     }
