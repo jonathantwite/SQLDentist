@@ -11,6 +11,8 @@
 import dayjs from 'dayjs';
 import Prism from 'prismjs';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
 import 'prismjs/components/prism-sql.js';
 export default {
     async asyncData({ $content, params }) {
@@ -28,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 pre[class*="language-"].line-numbers {
   position: relative;
   padding-left: 3.8em;
@@ -89,5 +91,38 @@ pre[class*="language-"].line-numbers > code {
 
 .nuxt-content .nuxt-content-highlight>.filename+pre[class*=language-] {
     padding-top: 2rem;
+}
+
+.line-highlight{
+    margin-top: 1.8rem !important; /* TODO - confirm this is ok. */
+}
+
+.result-grid {
+    table {
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        border: 3px solid rgb(245, 242, 240);
+        width: 100%;
+
+        td, th {
+            padding: 5px;
+            border: 1px solid rgb(245, 242, 240);
+        }
+
+        th {
+            border-color: rgb(245, 242, 240);
+            border-width: 3px;
+            background-color: rgb(245, 242, 240);
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6{
+    &:not(:first-child){
+        margin-top: 5rem;
+    }
+}
+
+code{
+    background-color:  rgb(245, 242, 240);
 }
 </style>

@@ -54,6 +54,15 @@ SELECT TOP (100) Code FROM @Result AS R;
 
 <div class='result-grid'>
 
+|Code|
+|---|
+|78288301.0000|
+|78288301.0000|
+|78288301.0000|
+|78288301.0000|
+|78288301.0000|
+|78288301.0000|
+
 ```text
 SQL Server parse and compile time: 
    CPU time = 0 ms, elapsed time = 0 ms.
@@ -68,22 +77,13 @@ Table 'Numbers'. Scan count 1, logical reads 1608, physical reads 0, page server
 Total time:233 ms
 ```
 
-|Code|
-|---|
-|78288301.0000|
-|78288301.0000|
-|78288301.0000|
-|78288301.0000|
-|78288301.0000|
-|78288301.0000|
-
 </div>
 
 ### The `GO X` method
 
 SQL Server Management Studio (SSMS) has the functionality built into it's batching mechanism to repeat a command multiple times.  The `GO` batch separator can be used with a proceeding number to repeat the batch that number of times.  One issue for this is that variable cannot be carried over between batches, and so temporary tables need to be used instead.  This is not a particularly fair test then, but is much slower - as the following attempt to make 1000 rows shows:
 
-```sql
+```sql{12}[GoX.sql]
 DROP TABLE IF EXISTS #Timing;
 CREATE TABLE #Result (Code DECIMAL(18,4));
 CREATE TABLE #Timing (StartTime DATETIME2);
@@ -130,7 +130,7 @@ Total time:545566 ms
 
 That is 9m 05s.  With all logging and *Include Actual Execution Plan* turned off, 1000 batches ran instantaneously, 100000 batches took 18s and 1 million batches 1m 57s as measured by SSMS.
 
-```sql
+```sql{}[GoX1M.sql]
 DECLARE @Result DECIMAL(18,4)
 SELECT @Result = CAST(CAST(RAND()*1e8 AS INT) AS DECIMAL(18,4))
 
@@ -141,7 +141,7 @@ GO 1000000
 
 Using a large table, you can use the `ROW_NUMBER()` function to generate a unique seed for the each `RAND()` call.  This is useful if you do not have any tables with guaranteed unique integers, or not a big enough table.  In this case, you can `CROSS JOIN` the largest table (possibly `sys.objects`) with itself multiple times to create a table with many rows.
 
-```sql
+```sql{}[RowNumber.sql]
 DECLARE @Result TABLE (Code DECIMAL(18,4))
 DECLARE @T0 DATETIME2 = GETDATE();
 SET STATISTICS TIME,IO ON;
@@ -161,6 +161,15 @@ SELECT TOP (100) Code FROM @Result AS R;
 
 <div class='result-grid'>
 
+|Code|
+|---|
+|18209943.0000|
+|18211806.0000|
+|18213670.0000|
+|18215533.0000|
+|18217396.0000|
+|18219260.0000|
+
 ```text
 SQL Server parse and compile time: 
    CPU time = 7 ms, elapsed time = 7 ms.
@@ -175,22 +184,13 @@ Table 'sysschobjs'. Scan count 3, logical reads 115, physical reads 0, page serv
 Total time:483 ms
 ```
 
-|Code|
-|---|
-|18209943.0000|
-|18211806.0000|
-|18213670.0000|
-|18215533.0000|
-|18217396.0000|
-|18219260.0000|
-
 </div>
 
 ### Using a large table of integers
 
 If you happen to have a large table with unique numbers (e.g. IDs), you could use these as seeds.  Using the `Numbers` table created above:
 
-```sql
+```sql{}[IntTable.sql]
 DECLARE @Result TABLE (Code DECIMAL(18,4))
 DECLARE @T0 DATETIME2 = GETDATE();
 SET STATISTICS TIME,IO ON;
@@ -207,6 +207,15 @@ SELECT TOP (100) Code FROM @Result AS R;
 
 <div class='result-grid'>
 
+|Code|
+|---|
+|103305.0000|
+|105168.0000|
+|107032.0000|
+|108895.0000|
+|110758.0000|
+|112622.0000|
+
 ```text
 SQL Server parse and compile time: 
    CPU time = 0 ms, elapsed time = 0 ms.
@@ -221,20 +230,11 @@ Table 'Numbers'. Scan count 1, logical reads 1608, physical reads 0, page server
 Total time:433 ms
 ```
 
-|Code|
-|---|
-|103305.0000|
-|105168.0000|
-|107032.0000|
-|108895.0000|
-|110758.0000|
-|112622.0000|
-
 </div>
 
 Adding a clustered index to the table doesn't effect the speed:
 
-```sql
+```sql{1}[IntTablePK.sql]
 CREATE CLUSTERED INDEX PK_Numbers ON dbo.Numbers (Number);
 
 DECLARE @Result TABLE (Code DECIMAL(18,4))
@@ -272,7 +272,7 @@ Total time:430 ms
 
 Nor does a non-clustered index.  However, if you are using a non-indexed column on a larger table (perhaps an employee table where the primary key employee id is alpha-numeric but there is a unique integer web-login id column), then a non-clustered index might be a good idea on that column.
 
-```sql
+```sql{}[IntColumn.sql]
 DROP TABLE IF EXISTS dbo.SomeData;
 SELECT TOP (1000000) 
     CONCAT('A', ROW_NUMBER() OVER (ORDER BY O.object_id)) AS Id, 
@@ -300,6 +300,15 @@ PRINT CONCAT('Total time:', DATEDIFF(MILLISECOND, @T0, GETDATE()), ' ms');
 
 <div class='result-grid'>
 
+|Code|
+|---|
+|99846011.0000|
+|99847875.0000|
+|99849738.0000|
+|99851601.0000|
+|94206948.0000|
+|99853465.0000|
+
 ```text
 SQL Server parse and compile time: 
    CPU time = 0 ms, elapsed time = 0 ms.
@@ -314,18 +323,9 @@ Table 'SomeData'. Scan count 1, logical reads 7965, physical reads 0, page serve
 Total time:543 ms
 ```
 
-|Code|
-|---|
-|99846011.0000|
-|99847875.0000|
-|99849738.0000|
-|99851601.0000|
-|94206948.0000|
-|99853465.0000|
-
 </div>
 
-```sql
+```sql{1}[IntColumnPK.sql]
 CREATE NONCLUSTERED INDEX IX_SomeData_Number ON dbo.SomeData (Number);
 
 DECLARE @Result TABLE (Code DECIMAL(18,4))
@@ -345,6 +345,15 @@ SELECT TOP (100) Code FROM @Result AS R;
 
 <div class='result-grid'>
 
+|Code|
+|---|
+|18209943.0000|
+|18211806.0000|
+|18213670.0000|
+|18215533.0000|
+|18217396.0000|
+|18219260.0000|
+
 ```text
 SQL Server parse and compile time: 
    CPU time = 0 ms, elapsed time = 0 ms.
@@ -358,15 +367,6 @@ Table 'SomeData'. Scan count 1, logical reads 3104, physical reads 0, page serve
    CPU time = 516 ms,  elapsed time = 525 ms.
 Total time:524 ms
 ```
-
-|Code|
-|---|
-|18209943.0000|
-|18211806.0000|
-|18213670.0000|
-|18215533.0000|
-|18217396.0000|
-|18219260.0000|
 
 </div>
 
