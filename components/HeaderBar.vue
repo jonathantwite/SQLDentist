@@ -22,3 +22,9 @@
         </div>
     </div>
 </template>
+
+<style lang="scss">
+.nav-scroller a:not(:hover) {
+    text-decoration: none;
+}
+</style>

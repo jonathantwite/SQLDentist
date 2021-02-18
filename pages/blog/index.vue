@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Blog Posts</h2>
+        <h2 class="mb-4">Blog Posts</h2>
         <blog-post-listings :articles="articles"></blog-post-listings>
     </div>
 </template>

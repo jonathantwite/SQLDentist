@@ -1,9 +1,9 @@
 <template>
     <ol class="blog-posts">
         <li v-for="article of articles" :key="article.slug">
-            <NuxtLink :to="'/blog/' + article.slug">
-                <img :src="article.img">
-                <div class="blog-summary text-dark">
+            <NuxtLink :to="'/blog/' + article.slug" class="pt-3">
+                <img v-if="article.img" :src="article.img">
+                <div class="blog-summary text-dark pb-4">
                     <p class="h3">{{ article.title }}</p>
                     <p class="blog-date lead small">{{ article.createdAtDisplay }}</p>
                     <!-- <p>by {{ article.author.name }}</p> -->
@@ -31,6 +31,9 @@ ol.blog-posts {
     padding: 0;
 
     li {
+        a:not(:hover) {
+            text-decoration: none;
+        }
         .blog-summary{
             p {
                 margin-bottom: 0;

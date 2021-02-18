@@ -1,13 +1,17 @@
-// Customisations
-$font-family-base: 'Open Sans', sans-serif;
-$headings-font-family: 'Prata', serif;
-$paragraph-margin-bottom: 2rem;
-//$headings-margin-bottom: 3rem;
-
 // Required
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+
+// Customisations
+$font-family-base: 'Open Sans', sans-serif;
+$headings-font-family: 'Prata', serif;
+$paragraph-margin-bottom: 2rem;
+
+$link-color: $body-color;
+$link-decoration: underline dashed 2px;
+$link-hover-color: $body-color;
+$link-hover-decoration: underline solid 2px;
 
 // Optional
 @import "~bootstrap/scss/reboot";
