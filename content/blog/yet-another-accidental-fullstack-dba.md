@@ -1,6 +1,8 @@
-# Yet another accidental fullstack DBA
-
-Welcome.  My story is the story of many other developers...
+---
+title: Yet another accidental fullstack DBA
+description: 'My story is the story of many other developers...'
+---
+My story is the story of many other developers...
 <!--more-->
 I started a new job at a company creating line-of-business software for local government.  I started working with a large and complex management system built in C# (WPF) backed by an SQL database that is installed locally on the clients own hardware.  The system is a classic legacy application - functionality wise it works well for the clients, although the code is a little messy now and has suffered from a little lack of structure.  It was however, somewhat slow in several places and at times struggled with the ever growing amount of data requested by the users.
 

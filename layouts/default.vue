@@ -3,7 +3,11 @@
         <b-container class="bg-white page">
             <HeaderBar />
 
-            <Nuxt />
+            <b-row align-h="center">
+                <b-col md="8" class="blog-main">
+                    <Nuxt />
+                </b-col>
+            </b-row>
         </b-container>
     </div>
 </template>
@@ -47,6 +51,7 @@
   border-right: 1px solid #eee;
   border-top: 1px solid #eee;
   margin-top: 3rem;
+  margin-bottom: 3rem;
   box-shadow: 0 3px 7px rgba(0,0,0,.7);
 
   &::before,

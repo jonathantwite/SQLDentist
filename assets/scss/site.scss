@@ -1,6 +1,8 @@
 // Customisations
 $font-family-base: 'Open Sans', sans-serif;
 $headings-font-family: 'Prata', serif;
+$paragraph-margin-bottom: 2rem;
+//$headings-margin-bottom: 3rem;
 
 // Required
 @import "~bootstrap/scss/functions";
@@ -18,4 +20,8 @@ $headings-font-family: 'Prata', serif;
 // Overrides
 .lead {
     font-family: $headings-font-family;
+}
+
+.blog-header-logo {
+    margin-bottom: 1rem;
 }

@@ -1,31 +1,58 @@
 <template>
     <div>
         <h1>Blog Posts</h1>
-        <ul>
+        <ol>
             <li v-for="article of articles" :key="article.slug">
                 <NuxtLink :to="'/blog/' + article.slug">
                     <img :src="article.img">
-                    <div>
-                        <h2>{{ article.title }}</h2>
+                    <div class="blog-summary text-dark">
+                        <p class="h3">{{ article.title }}</p>
+                        <p class="blog-date lead small">{{ article.createdAtDisplay }}</p>
                         <!-- <p>by {{ article.author.name }}</p> -->
-                        <p>{{ article.description }}</p>
+                        <p class="blog-desc">{{ article.description }}</p>
                     </div>
                 </NuxtLink>
             </li>
-        </ul>
+        </ol>
     </div>
 </template>
 
 <script>
+import dayjs from 'dayjs';
 export default {
     async asyncData({ $content, params }) {
         const articles = await $content('blog', params.slug)
             .only(['title', 'description', 'img', 'slug', 'author'])
             .sortBy('createdAt', 'asc')
             .fetch();
+
+        articles.forEach((a) => {
+            a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
+        });
+
         return {
             articles
         };
     }
 };
 </script>
+
+<style lang="scss" scoped>
+ol {
+    list-style: none;
+    padding: 0;
+
+    li {
+        .blog-summary{
+            p {
+                margin-bottom: 0;
+
+                &.h3{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+}
+</style>

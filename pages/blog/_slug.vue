@@ -1,14 +1,10 @@
 <template>
-    <div class="row">
-        <div class="col-md-8 blog-main">
-            <article class="blog-post">
-                <h2 class="bog-post-title">{{ page.title }}</h2>
-                <p class="blog-post-meta">{{ createdAtDisplay }}</p>
+    <article class="blog-post">
+        <h2 class="bog-post-title">{{ page.title }}</h2>
+        <p class="lead blog-post-meta">{{ createdAtDisplay }}</p>
 
-                <nuxt-content :document="page" />
-            </article>
-        </div>
-    </div>
+        <nuxt-content :document="page" />
+    </article>
 </template>
 
 <script>
