@@ -77,4 +77,8 @@
     z-index: -2;
   }
 }
+
+.blog-main {
+    min-height: 300px;
+}
 </style>
