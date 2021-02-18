@@ -4,7 +4,7 @@
             <HeaderBar />
 
             <b-row align-h="center">
-                <b-col md="8" class="blog-main">
+                <b-col md="8" class="blog-main pt-3 pb-3">
                     <Nuxt />
                 </b-col>
             </b-row>

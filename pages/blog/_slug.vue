@@ -19,7 +19,7 @@ export default {
     },
     computed: {
         createdAtDisplay() {
-            return dayjs(this.createdAt).format('dddd D MMMM YYYY');
+            return dayjs(this.page.createdAt).format('dddd D MMMM YYYY');
         }
     },
     mounted() {

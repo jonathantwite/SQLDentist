@@ -1,6 +1,8 @@
 ---
 title: Yet another accidental fullstack DBA
 description: 'My story is the story of many other developers...'
+author: Jonathan Twite
+createdAt: 2021-01-27
 ---
 My story is the story of many other developers...
 <!--more-->
