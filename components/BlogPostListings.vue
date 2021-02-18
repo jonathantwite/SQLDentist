@@ -34,11 +34,11 @@ ol.blog-posts {
         a:not(:hover) {
             text-decoration: none;
         }
-        .blog-summary{
+        .blog-summary {
             p {
                 margin-bottom: 0;
 
-                &.h3{
+                &.h3 {
                     text-decoration: underline;
                 }
             }
