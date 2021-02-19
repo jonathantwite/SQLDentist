@@ -2,7 +2,7 @@
     <ol class="blog-posts">
         <li v-for="article of articles" :key="article.slug">
             <NuxtLink :to="'/blog/' + article.slug" class="pt-3">
-                <img v-if="article.img" :src="article.img">
+                <img v-if="article.img" :src="article.img" :alt="article.description">
                 <div class="blog-summary text-dark pb-4">
                     <p class="h3">{{ article.title }}</p>
                     <p class="blog-date lead small">{{ article.createdAtDisplay }}</p>
