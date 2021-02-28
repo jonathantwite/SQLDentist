@@ -1,3 +1,5 @@
+import getRoutes from './utils/getRoutes';
+
 const description = 'SQL Server without pulling your teeth out - tips tricks and guides for developers working with Microsoft SQL Server.';
 const name = 'SQL at the Dentist';
 const url = 'https://sql-at-the-dentist.netlify.app/';
@@ -20,7 +22,7 @@ export default {
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: description },
-            
+
             // Facebook / LinkedIn
             { hid: 'og:url', name: 'og:url', content: url },
 
@@ -32,7 +34,7 @@ export default {
             { hid: 'og:image:type', name: 'og:image:type', content: 'image/jpeg' },
             { hid: 'og:image:width', name: 'og:image:width', content: '2000' },
             { hid: 'og:image:height', name: 'og:image:height', content: '2000' },
-            
+
             { hid: 'og:locale', name: 'og:locale', content: 'en_GB' },
 
             // Twitter
@@ -80,7 +82,11 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
         'bootstrap-vue/nuxt',
         // https://go.nuxtjs.dev/content
-        '@nuxt/content'
+        '@nuxt/content',
+        // https://sitemap.nuxtjs.org/
+        '@nuxtjs/sitemap',
+        // https://github.com/nuxt-community/robots-module#readme
+        '@nuxtjs/robots'
     ],
 
     // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -100,8 +106,7 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {
-    },
+    build: {},
 
     eslint: {
         fix: true
@@ -121,5 +126,16 @@ export default {
         },
         display: 'fallback',
         useStylesheet: true
+    },
+
+    sitemap: {
+        hostname: process.env.BASE_URL,
+        routes() {
+            return getRoutes();
+        }
+    },
+
+    robots: {
+        Sitemap: process.env.BASE_URL + '/sitemap.xml'
     }
 };
