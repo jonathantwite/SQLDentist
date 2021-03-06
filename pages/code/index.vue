@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="mb-4">Blog Posts</h2>
+        <h2 class="mb-4">Help yourself</h2>
         <article-listings :articles="articles"></article-listings>
     </div>
 </template>
@@ -11,7 +11,7 @@ import ArticleListings from '~/components/ArticleListing.vue';
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
-        const articles = await $content('blog', params.slug)
+        const articles = await $content('code', params.slug)
             .only(['title', 'description', 'img', 'slug', 'author', 'createdAt'])
             .sortBy('createdAt', 'desc')
             .fetch();
