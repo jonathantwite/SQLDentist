@@ -19,11 +19,14 @@ export default {
     props: {
         articles: {
             type: Array,
-            default: () => []
+            default: () => [],
+            validator(value) {
+                return value.reduce((t, article) => t + (article.path && article.title && article.description && article.createdAtDisplay ? 0 : 1), 0) === 0;
+            }
         }
     },
-    mounted(){
-        console.log(this.articles);
+    mounted() {
+        console.log(JSON.stringify(this.articles));
     }
 };
 </script>
