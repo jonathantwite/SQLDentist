@@ -22,7 +22,7 @@ export default {
 
                     const versEl = document.createElement('em');
                     versEl.classList.add('d-block', 'text-right');
-                    versEl.appendChild(document.createTextNode('SQL Server ' + version));
+                    versEl.appendChild(document.createTextNode('SQL Server ' + version + '+'));
 
                     e.appendChild(versEl);
                 }
