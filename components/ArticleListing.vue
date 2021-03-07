@@ -1,13 +1,13 @@
 <template>
-    <ol class="blog-posts">
+    <ol class="article-posts">
         <li v-for="article of articles" :key="article.slug">
-            <NuxtLink :to="'/blog/' + article.slug" class="pt-3">
+            <NuxtLink :to="article.path" class="pt-3">
                 <img v-if="article.img" :src="article.img" :alt="article.description">
-                <div class="blog-summary text-dark pb-4">
+                <div class="article-summary text-dark pb-4">
                     <p class="h3">{{ article.title }}</p>
-                    <p class="blog-date lead small">{{ article.createdAtDisplay }}</p>
+                    <p class="article-date lead small">{{ article.createdAtDisplay }}</p>
                     <!-- <p>by {{ article.author.name }}</p> -->
-                    <p class="blog-desc">{{ article.description }}</p>
+                    <p class="article-desc">{{ article.description }}</p>
                 </div>
             </NuxtLink>
         </li>
@@ -19,14 +19,20 @@ export default {
     props: {
         articles: {
             type: Array,
-            default: () => []
+            default: () => [],
+            validator(value) {
+                return value.reduce((t, article) => t + (article.path && article.title && article.description && article.createdAtDisplay ? 0 : 1), 0) === 0;
+            }
         }
+    },
+    mounted() {
+        console.log(JSON.stringify(this.articles));
     }
 };
 </script>
 
 <style lang="scss">
-ol.blog-posts {
+ol.article-posts {
     list-style: none;
     padding: 0;
 
@@ -34,7 +40,7 @@ ol.blog-posts {
         a:not(:hover) {
             text-decoration: none;
         }
-        .blog-summary {
+        .article-summary {
             p {
                 margin-bottom: 0;
 

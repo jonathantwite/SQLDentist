@@ -13,18 +13,18 @@
         <p>The <NuxtLink to="/code">Help Yourself</NuxtLink> is a collection of useful snippets, often borrowed from elsewhere, collated into one place.  The <NuxtLink to="/">Sweet Treats</NuxtLink> are things I have discovered that are possible, but probably not wise to do.</p>
 
         <h2 class="mb-4">Latest from the blog</h2>
-        <blog-post-listings :articles="blogPosts"></blog-post-listings>
+        <article-listings :articles="blogPosts"></article-listings>
     </div>
 </template>
 
 <script>
 import dayjs from 'dayjs';
-import BlogPostListings from '~/components/BlogPostListings.vue';
+import ArticleListings from '~/components/ArticleListing.vue';
 export default {
-    components: { BlogPostListings },
+    components: { ArticleListings },
     async asyncData({ $content, params }) {
         const blogPosts = await $content('blog', params.slug)
-            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt'])
+            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
             .sortBy('createdAt', 'desc')
             .limit(2)
             .fetch();

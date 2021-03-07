@@ -13,7 +13,7 @@ import codeBlock from '@/mixins/code-blocks';
 export default {
     mixins: [codeBlock],
     async asyncData({ $content, params }) {
-        const page = await $content(`blog/${params.slug}` || 'blog/index').fetch();
+        const page = await $content(`code/${params.slug}` || 'code/index').fetch();
         return { page };
     },
     computed: {
