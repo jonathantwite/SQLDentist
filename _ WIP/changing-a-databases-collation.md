@@ -46,6 +46,13 @@ The first plan was to use Redgate's SQL Compare and SQL Data Compare tools.  One
 
 
 
+
+Our onboarding process, for the database, involves us restoring a backup of our database on a database on the client's server.  This backup is created from "blank" version of our application's database - although still containing lookup/static data and default settings.
+
 ## Updating client 1
 
-Client 1 allows us access to their database server with full admin rights.  We were therefore able to create a new database with the correct collation
+Client 1 allows us access to their database server with full admin rights.  We were therefore able to create a new database with the correct collation and upload pre-created script files.
+
+Our first issue appeared when we realised that whoever had created the latest "blank" backup had created on an 2019 SQL Server and so could not be restored on the client's SQL Server 2012.
+
+A backup created on SQL Server 2012 was found and restored onto the client, however there was still a couple of tables with data that needed to be emptied.  Unfortunately the client's
