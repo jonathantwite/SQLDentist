@@ -13,6 +13,13 @@ $link-decoration: underline dashed 2px;
 $link-hover-color: $body-color;
 $link-hover-decoration: underline solid 2px;
 
+$theme-colors: (
+    // Copied from prism theme.
+    "code": #f5f2f0,
+    "code-highlight": #ece6e2,
+    "code-keyword": #07a
+);
+
 // Optional
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";

@@ -54,7 +54,20 @@ export default {
     ],
 
     // Content module configuration: https://go.nuxtjs.dev/config-content
-    content: {},
+    content: {
+        markdown: {
+            remarkPlugins: [
+                ['remark-autolink-headings', {
+                    behaviour: 'append',
+                    content: {
+                        type: 'element',
+                        tagName: 'b-icon-link45deg',
+                        properties: { variant: ['code-keyword'] }
+                    }
+                }]
+            ]
+        }
+    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
@@ -66,7 +79,9 @@ export default {
 
     bootstrapVue: {
         bootstrapCSS: false,
-        bootstrapVueCSS: false
+        bootstrapVueCSS: false,
+        icons: true
+        // components: ['BIcon', 'BIconLink45deg']
     },
 
     googleFonts: {
