@@ -91,3 +91,6 @@ sw.*
 
 # Visual Studio
 .vs
+
+# VS Code
+.vscode
