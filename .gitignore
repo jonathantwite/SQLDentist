@@ -94,3 +94,7 @@ sw.*
 
 # VS Code
 .vscode
+
+# Storybook
+.nuxt-storybook
+storybook-static

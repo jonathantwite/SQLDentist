@@ -91,5 +91,9 @@ export default {
         },
         display: 'fallback',
         useStylesheet: true
+    },
+
+    storybook: {
+        // Options
     }
 };
