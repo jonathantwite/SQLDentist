@@ -12,8 +12,8 @@
 
         <p>The <NuxtLink to="/code">Help Yourself</NuxtLink> is a collection of useful snippets, often borrowed from elsewhere, collated into one place.  The <NuxtLink to="/">Sweet Treats</NuxtLink> are things I have discovered that are possible, but probably not wise to do.</p>
 
-        <h2 class="mb-4">Latest from the blog</h2>
-        <article-listings :articles="blogPosts"></article-listings>
+        <h2 class="mb-4">Latest from site</h2>
+        <article-listings :articles="posts" show-area></article-listings>
     </div>
 </template>
 
@@ -23,19 +23,32 @@ import ArticleListings from '~/components/ArticleListing.vue';
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
-        const blogPosts = await $content('blog', params.slug)
+        const posts = await $content('blog', params.slug)
             .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
             .sortBy('createdAt', 'desc')
             .limit(2)
             .fetch();
 
-        blogPosts.forEach((a) => {
+        const codePosts = await $content('code', params.slug)
+            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
+            .sortBy('createdAt', 'desc')
+            .limit(2)
+            .fetch();
+
+        posts.push(...codePosts);
+
+        posts.forEach((a) => {
             console.log(a);
             a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
+            a.area = /\/([^\/]*)\/.*/.exec(a.path)[1];
         });
 
+        posts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        console.log(posts);
+
         return {
-            blogPosts
+            posts: posts.slice(0, 3)
         };
     }
 };

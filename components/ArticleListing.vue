@@ -4,7 +4,7 @@
             <NuxtLink :to="article.path" class="pt-3">
                 <img v-if="article.img" :src="article.img" :alt="article.description">
                 <div class="article-summary text-dark pb-4">
-                    <p class="h3">{{ article.title }}</p>
+                    <p><span class="h3 text-decoration-underline">{{ article.title }}</span><sup v-if="showArea" class="text-uppercase">&nbsp;[{{ article.area }}]</sup></p>
                     <p class="article-date lead small">{{ article.createdAtDisplay }}</p>
                     <!-- <p>by {{ article.author.name }}</p> -->
                     <p class="article-desc">{{ article.description }}</p>
@@ -23,6 +23,10 @@ export default {
             validator(value) {
                 return value.reduce((t, article) => t + (article.path && article.title && article.description && article.createdAtDisplay ? 0 : 1), 0) === 0;
             }
+        },
+        showArea: {
+            type: Boolean,
+            default: () => false
         }
     },
     mounted() {
@@ -44,8 +48,14 @@ ol.article-posts {
             p {
                 margin-bottom: 0;
 
-                &.h3 {
+                .h3 {
                     text-decoration: underline;
+
+                    sup {
+                        font-size: 40%;
+                        top: -1rem;
+                        text-decoration: none !important;
+                    }
                 }
             }
         }
