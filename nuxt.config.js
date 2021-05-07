@@ -57,7 +57,7 @@ export default {
         markdown: {
             remarkPlugins: [
                 ['remark-autolink-headings', {
-                    behaviour: 'append',
+                    behavior: 'append',
                     content: {
                         type: 'element',
                         tagName: 'b-icon-link45deg',
@@ -79,8 +79,8 @@ export default {
     bootstrapVue: {
         bootstrapCSS: false,
         bootstrapVueCSS: false,
-        icons: true
-        // components: ['BIcon', 'BIconLink45deg']
+        icons: false,
+        components: ['BIcon', 'BIconLink45deg']
     },
 
     googleFonts: {

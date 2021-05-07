@@ -12,6 +12,17 @@
     </div>
 </template>
 
+<script>
+import { BContainer, BRow, BCol } from 'bootstrap-vue';
+export default {
+    components: {
+        BContainer,
+        BRow,
+        BCol
+    }
+};
+</script>
+
 <style lang="scss">
 .notebook-paper {
   width: 100%;
