@@ -36,21 +36,30 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/site.scss';
+
 ol.article-posts {
     list-style: none;
     padding: 0;
 
     li {
-        a:not(:hover) {
+        a:hover {
+            text-decoration: $link-hover-decoration !important;
+        }
+
+        a {
             text-decoration: none;
         }
+
         .article-summary {
             p {
                 margin-bottom: 0;
 
-                .h3 {
-                    text-decoration: underline;
+                .h3:not(:hover) {
+                    text-decoration: $link-decoration;
+                }
 
+                .h3 {
                     sup {
                         font-size: 40%;
                         top: -1rem;

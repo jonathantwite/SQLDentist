@@ -9,9 +9,9 @@ $headings-font-family: 'Prata', serif;
 $paragraph-margin-bottom: 2rem;
 
 $link-color: $body-color;
-$link-decoration: underline dashed 2px;
+$link-decoration: underline solid 2px $gray-400;
 $link-hover-color: $body-color;
-$link-hover-decoration: underline solid 2px;
+$link-hover-decoration: underline solid 2px $gray-800;
 
 $theme-colors: (
     // Copied from prism theme.
@@ -28,6 +28,7 @@ $theme-colors: (
 @import "~bootstrap/scss/tables";
 
 @import 'bootstrap-vue/src/index.scss';
+@import 'blog.scss';
 @import 'code.scss';
 
 // Overrides
