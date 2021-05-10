@@ -7,17 +7,16 @@
 
 <script>
 import dayjs from 'dayjs';
-import ArticleListings from '~/components/ArticleListing.vue';
+import ArticleListings, { fieldsForListing } from '~/components/ArticleListing.vue';
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
         const articles = await $content('blog', params.slug)
-            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
+            .only(fieldsForListing)
             .sortBy('createdAt', 'desc')
             .fetch();
 
         articles.forEach((a) => {
-            console.log(a);
             a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
         });
 

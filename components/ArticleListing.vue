@@ -15,6 +15,7 @@
 </template>
 
 <script>
+export const fieldsForListing = ['slug', 'title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'];
 export default {
     props: {
         articles: {
@@ -28,10 +29,10 @@ export default {
             type: Boolean,
             default: () => false
         }
-    },
-    mounted() {
-        console.log(JSON.stringify(this.articles));
     }
+    // mounted() {
+    //    console.log(JSON.stringify(this.articles));
+    // }
 };
 </script>
 
