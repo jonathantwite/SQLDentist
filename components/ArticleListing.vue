@@ -15,23 +15,24 @@
 </template>
 
 <script>
+export const fieldsForListing = ['slug', 'title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'];
+export const listingPropValidator = value => value.reduce((t, article) => t && (article.path && article.title && article.description && article.createdAtDisplay), true);
+
 export default {
     props: {
         articles: {
             type: Array,
             default: () => [],
-            validator(value) {
-                return value.reduce((t, article) => t + (article.path && article.title && article.description && article.createdAtDisplay ? 0 : 1), 0) === 0;
-            }
+            validator: listingPropValidator
         },
         showArea: {
             type: Boolean,
             default: () => false
         }
-    },
-    mounted() {
-        console.log(JSON.stringify(this.articles));
     }
+    // mounted() {
+    //    console.log(JSON.stringify(this.articles));
+    // }
 };
 </script>
 

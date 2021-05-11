@@ -3,6 +3,9 @@ title: Converting a decimal to a varchar
 description: Fixing a simple, but easy-to-miss, error (twice) when converting a decimal to varchar.
 author: Jonathan Twite
 createdAt: 2021-05-07
+related:
+  - blog 02
+  - blog 03
 ---
 
 An error occurred in a stored procedure yesterday that has never had a problem before:

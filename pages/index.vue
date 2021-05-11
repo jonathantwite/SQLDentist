@@ -18,34 +18,29 @@
 </template>
 
 <script>
-import dayjs from 'dayjs';
-import ArticleListings from '~/components/ArticleListing.vue';
+import ArticleListings, { fieldsForListing } from '~/components/ArticleListing.vue';
+import { processContentArticle } from '~/code/content/contentHelpers';
+
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
         const posts = await $content('blog', params.slug)
-            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
+            .only(fieldsForListing)
             .sortBy('createdAt', 'desc')
             .limit(2)
             .fetch();
 
         const codePosts = await $content('code', params.slug)
-            .only(['title', 'description', 'img', 'slug', 'author', 'createdAt', 'path'])
+            .only(fieldsForListing)
             .sortBy('createdAt', 'desc')
             .limit(2)
             .fetch();
 
         posts.push(...codePosts);
 
-        posts.forEach((a) => {
-            console.log(a);
-            a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
-            a.area = /\/([^\/]*)\/.*/.exec(a.path)[1];
-        });
+        processContentArticle(posts);
 
-        posts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-        console.log(posts);
+        posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         return {
             posts: posts.slice(0, 3)
