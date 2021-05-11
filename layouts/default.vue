@@ -1,24 +1,28 @@
 <template>
     <div class="notebook-paper">
         <b-container class="bg-white page">
-            <HeaderBar />
+            <header-bar />
 
             <b-row align-h="center">
                 <b-col md="8" class="blog-main pt-3 pb-3">
                     <Nuxt />
                 </b-col>
             </b-row>
+
+            <footer-bar />
         </b-container>
     </div>
 </template>
 
 <script>
 import { BContainer, BRow, BCol } from 'bootstrap-vue';
+import FooterBar from '~/components/FooterBar.vue';
 export default {
     components: {
         BContainer,
         BRow,
-        BCol
+        BCol,
+        FooterBar
     }
 };
 </script>
