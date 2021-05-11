@@ -18,8 +18,9 @@
 </template>
 
 <script>
-import dayjs from 'dayjs';
 import ArticleListings, { fieldsForListing } from '~/components/ArticleListing.vue';
+import { processContentArticle } from '~/code/content/contentHelpers';
+
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
@@ -37,10 +38,7 @@ export default {
 
         posts.push(...codePosts);
 
-        posts.forEach((a) => {
-            a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
-            a.area = /\/([^/]*)\/.*/.exec(a.path)[1];
-        });
+        processContentArticle(posts);
 
         posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 

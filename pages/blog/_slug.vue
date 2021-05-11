@@ -7,45 +7,19 @@
             <nuxt-content :document="page" />
         </article>
         <hr v-if="showRelated" />
-        <article v-if="showRelated">
-            <h3>Related</h3>
-            <article-listing :articles="relatedArticles" show-area></article-listing>
-        </article>
+        <related-articles v-if="showRelated" :articles="relatedArticles"></related-articles>
     </div>
 </template>
 
 <script>
 import dayjs from 'dayjs';
 import codeBlock from '@/mixins/code-blocks';
-import ArticleListing, { fieldsForListing } from '@/components/ArticleListing';
+import { loadRelatedArticles } from '@/code/content/contentHelpers';
 export default {
-    components: {
-        ArticleListing
-    },
     mixins: [codeBlock],
     async asyncData({ $content, params }) {
         const page = await $content(`blog/${params.slug}` || 'blog/index').fetch();
-
-        const relatedArticles = [];
-
-        if (page.related) {
-            for (const r of page.related) {
-                const [dir, id] = r.split(' ');
-                const idReg = '^' + id;
-
-                relatedArticles.push(...await $content(dir)
-                    .where({ slug: { $regex: [idReg] } })
-                    .only(fieldsForListing)
-                    .limit(1)
-                    .fetch());
-            }
-
-            relatedArticles.forEach((a) => {
-                a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
-                a.area = /\/([^/]*)\/.*/.exec(a.path)[1];
-            });
-        }
-
+        const relatedArticles = await loadRelatedArticles($content, page);
         const showRelated = relatedArticles && relatedArticles.length > 0;
 
         return { page, relatedArticles, showRelated };

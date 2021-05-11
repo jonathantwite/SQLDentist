@@ -6,8 +6,9 @@
 </template>
 
 <script>
-import dayjs from 'dayjs';
 import ArticleListings, { fieldsForListing } from '~/components/ArticleListing.vue';
+import { processContentArticle } from '~/code/content/contentHelpers';
+
 export default {
     components: { ArticleListings },
     async asyncData({ $content, params }) {
@@ -16,9 +17,7 @@ export default {
             .sortBy('createdAt', 'desc')
             .fetch();
 
-        articles.forEach((a) => {
-            a.createdAtDisplay = dayjs(a.createdAt).format('DD/MM/YY');
-        });
+        processContentArticle(articles);
 
         return {
             articles
