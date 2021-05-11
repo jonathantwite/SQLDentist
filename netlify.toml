@@ -1,7 +1,10 @@
 [[headers]]
     for = "/*"
     [headers.values]
-        Content-Security-Policy = "default-src 'self' 'unsafe-inline';font-src fonts.gstatic.com;style-src 'self' fonts.googleapis.com"
+        Content-Security-Policy = '''
+            default-src 'self' 'unsafe-inline';
+            font-src 'self' fonts.gstatic.com;
+            style-src 'self' 'unsafe-inline' fonts.googleapis.com'''
         X-Content-Type-Options = "nosniff"
         X-Frame-Options = "SAMEORIGIN"
         X-XSS-Protection = "1; mode=block"
