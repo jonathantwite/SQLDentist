@@ -40,5 +40,8 @@ export const processContentArticle = (article) => {
     }
 
     article.createdAtDisplay = dayjs(article.createdAt).format('DD/MM/YY');
-    article.area = /\/([^/]*)\/.*/.exec(article.path)[1];
+    const areaMatch = /\/([^/]*)\/.*/.exec(article.path);
+    if (areaMatch && Array.isArray(areaMatch) && areaMatch.length >= 2) {
+        article.area = areaMatch[1];
+    }
 };
