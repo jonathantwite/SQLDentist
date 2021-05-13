@@ -1,29 +1,65 @@
 <template>
     <div class="notebook-paper">
         <b-container class="bg-white page">
-            <HeaderBar />
+            <header-bar />
 
             <b-row align-h="center">
                 <b-col md="8" class="blog-main pt-3 pb-3">
                     <Nuxt />
                 </b-col>
             </b-row>
+
+            <footer-bar />
         </b-container>
     </div>
 </template>
 
 <script>
 import { BContainer, BRow, BCol } from 'bootstrap-vue';
+import FooterBar from '~/components/FooterBar.vue';
 export default {
     components: {
         BContainer,
         BRow,
-        BCol
+        BCol,
+        FooterBar
     }
 };
 </script>
 
 <style lang="scss">
+@import '~/assets/scss/site';
+$footer-size: 48px;
+$header-size: 136px;
+$nav-size: 43px;
+$line-width: 1px;
+
+$footer-as-gradient: linear-gradient(
+    0deg,
+    $gray-100 0,
+    $gray-100 $footer-size,
+    $gray-300 $footer-size,
+    $gray-300 $footer-size + $line-width,
+    $white $footer-size + $line-width,
+    $white 50%,
+    rgba(255,255,255,0.0) 50%
+);
+
+$header-as-gradient: linear-gradient(
+    180deg,
+    $white 0,
+    $white $header-size,
+    $gray-300 $header-size,
+    $gray-300 $header-size + $line-width,
+    $white $header-size + $line-width,
+    $white $header-size + $line-width + $nav-size,
+    $gray-300 $header-size + $line-width + $nav-size,
+    $gray-300 $header-size + $line-width + $nav-size + $line-width,
+    $white $header-size + $line-width + $nav-size + $line-width,
+    $white 50%,
+    rgba(255,255,255,0.0) 50%
+);
+
 .notebook-paper {
   width: 100%;
   min-height: 100vh;
@@ -74,8 +110,10 @@ export default {
     bottom: 0;
     right: 0;
     box-shadow: 0 5px 14px rgba(0,0,0,.7);
-    background: #fff;
     transition: all .3s ease-in-out;
+    background:
+        $header-as-gradient,
+        $footer-as-gradient;
   }
 
   &::before {
