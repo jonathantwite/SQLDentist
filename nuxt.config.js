@@ -9,7 +9,7 @@ export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
     publicRuntimeConfig: {
-        baseURL: process.env.BASE_URL || 'http://localhost:3000'
+        baseURL: process.env.URL || 'http://localhost:3000'
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
@@ -30,7 +30,7 @@ export default {
             { hid: 'og:description', name: 'og:title', content: description },
             { hid: 'og:type', name: 'og:type', content: 'website' },
 
-            { hid: 'og:image', name: 'og:image', content: process.env.BASE_URL + image },
+            { hid: 'og:image', name: 'og:image', content: process.env.URL + image },
             { hid: 'og:image:type', name: 'og:image:type', content: 'image/jpeg' },
             { hid: 'og:image:width', name: 'og:image:width', content: '2000' },
             { hid: 'og:image:height', name: 'og:image:height', content: '2000' },
@@ -41,7 +41,7 @@ export default {
             { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
             { hid: 'twitter:title', name: 'twitter:title', content: name },
             { hid: 'twitter:description', name: 'twitter:description', content: description },
-            { hid: 'twitter:image', name: 'twitter:image', content: process.env.BASE_URL + image },
+            { hid: 'twitter:image', name: 'twitter:image', content: process.env.URL + image },
             { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: name },
 
             // MS Application Favicon
@@ -129,13 +129,13 @@ export default {
     },
 
     sitemap: {
-        hostname: process.env.BASE_URL,
+        hostname: process.env.URL,
         routes() {
             return getRoutes();
         }
     },
 
     robots: {
-        Sitemap: process.env.BASE_URL + '/sitemap.xml'
+        Sitemap: process.env.URL + '/sitemap.xml'
     }
 };
