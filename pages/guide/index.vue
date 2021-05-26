@@ -22,6 +22,11 @@ export default {
         return {
             articles
         };
+    },
+    head() {
+        return {
+            title: this.$config.siteName + ' - SQL Guide'
+        };
     }
 };
 </script>

@@ -1,7 +1,6 @@
 import getRoutes from './utils/getRoutes';
 
 const description = 'SQL Server without pulling your teeth out - tips tricks and guides for developers working with Microsoft SQL Server.';
-const name = 'SQL at the Dentist';
 const url = 'https://sql-at-the-dentist.netlify.app/';
 const image = '/logo.jpeg';
 
@@ -9,12 +8,13 @@ export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
     publicRuntimeConfig: {
-        baseURL: process.env.URL || 'http://localhost:3000'
+        baseURL: process.env.URL || 'http://localhost:3000',
+        siteName: process.env.SITE_NAME
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: name,
+        title: process.env.SITE_NAME,
         htmlAttrs: {
             lang: 'en'
         },
@@ -26,7 +26,7 @@ export default {
             // Facebook / LinkedIn
             { hid: 'og:url', name: 'og:url', content: url },
 
-            { hid: 'og:title', name: 'og:title', content: name },
+            { hid: 'og:title', name: 'og:title', content: process.env.SITE_NAME },
             { hid: 'og:description', name: 'og:title', content: description },
             { hid: 'og:type', name: 'og:type', content: 'website' },
 
@@ -39,10 +39,10 @@ export default {
 
             // Twitter
             { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-            { hid: 'twitter:title', name: 'twitter:title', content: name },
+            { hid: 'twitter:title', name: 'twitter:title', content: process.env.SITE_NAME },
             { hid: 'twitter:description', name: 'twitter:description', content: description },
             { hid: 'twitter:image', name: 'twitter:image', content: process.env.URL + image },
-            { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: name },
+            { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: process.env.SITE_NAME },
 
             // MS Application Favicon
             { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#00aba9' },
