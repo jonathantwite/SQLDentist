@@ -9,12 +9,12 @@ module.exports = {
     },
     extends: [
         '@nuxtjs',
-        'plugin:nuxt/recommended',
-        'plugin:vue-a11y/base'
+        'plugin:nuxt/recommended'//,
+        // 'plugin:vue-a11y/base'
     ],
-    plugins: [
-        'vue-a11y'
-    ],
+    // plugins: [
+    //    'vue-a11y'
+    // ],
     // add your custom rules here
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
