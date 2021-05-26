@@ -13,10 +13,12 @@
 
 <script>
 import dayjs from 'dayjs';
+import articleSeo from '@/mixins/article-seo';
 import codeBlock from '@/mixins/code-blocks';
 import { loadRelatedArticles } from '@/code/content/contentHelpers';
+
 export default {
-    mixins: [codeBlock],
+    mixins: [codeBlock, articleSeo],
     async asyncData({ $content, params }) {
         const page = await $content(`blog/${params.slug}` || 'blog/index').fetch();
         const relatedArticles = await loadRelatedArticles($content, page);

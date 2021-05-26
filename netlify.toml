@@ -4,7 +4,7 @@
         Content-Security-Policy = '''
             default-src 'self' 'unsafe-inline' netlify-cdp-loader.netlify.app app.netlify.com;
             font-src 'self' fonts.gstatic.com;
-            style-src 'self' 'unsafe-inline' fonts.googleapis.com'''
+            style-src 'self' 'unsafe-inline' fonts.googleapis.com netlify-cdp-loader.netlify.app'''
         X-Content-Type-Options = "nosniff"
         X-Frame-Options = "SAMEORIGIN"
         X-XSS-Protection = "1; mode=block"
