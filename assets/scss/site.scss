@@ -30,6 +30,7 @@ $theme-colors: (
 @import 'bootstrap-vue/src/index.scss';
 @import 'blog.scss';
 @import 'code.scss';
+@import 'utilities.scss';
 
 // Overrides
 .lead {
