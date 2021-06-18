@@ -3,6 +3,7 @@ import getRoutes from './utils/getRoutes';
 const description = 'SQL Server without pulling your teeth out - tips tricks and guides for developers working with Microsoft SQL Server.';
 const url = 'https://sql-at-the-dentist.netlify.app/';
 const image = '/logo.jpeg';
+// import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 export default {
     // Target: https://go.nuxtjs.dev/config-target
@@ -106,7 +107,14 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {},
+    build: {
+        // plugins: [
+        //     new StyleLintPlugin({
+        //         files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
+        //         ignorePath: '.stylelintignore'
+        //     })
+        // ]
+    },
 
     eslint: {
         fix: true
