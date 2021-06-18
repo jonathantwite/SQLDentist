@@ -44,21 +44,17 @@ ol.article-posts {
     padding: 0;
 
     li {
-        a:hover {
-            text-decoration: $link-hover-decoration !important;
-        }
-
         a {
             text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: $link-hover-decoration !important;
         }
 
         .article-summary {
             p {
                 margin-bottom: 0;
-
-                .h3:not(:hover) {
-                    text-decoration: $link-decoration;
-                }
 
                 .h3 {
                     sup {
@@ -66,6 +62,10 @@ ol.article-posts {
                         top: -1rem;
                         text-decoration: none !important;
                     }
+                }
+
+                .h3:not(:hover) {
+                    text-decoration: $link-decoration;
                 }
             }
         }
