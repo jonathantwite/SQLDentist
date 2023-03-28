@@ -10,12 +10,12 @@ export default {
     target: 'static',
     publicRuntimeConfig: {
         baseURL: process.env.URL || 'http://localhost:3000',
-        siteName: process.env.SITE_NAME
+        siteName: process.env.SITE_TITLE
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: process.env.SITE_NAME,
+        title: process.env.SITE_TITLE,
         htmlAttrs: {
             lang: 'en'
         },
@@ -27,7 +27,7 @@ export default {
             // Facebook / LinkedIn
             { hid: 'og:url', name: 'og:url', content: url },
 
-            { hid: 'og:title', name: 'og:title', content: process.env.SITE_NAME },
+            { hid: 'og:title', name: 'og:title', content: process.env.SITE_TITLE },
             { hid: 'og:description', name: 'og:title', content: description },
             { hid: 'og:type', name: 'og:type', content: 'website' },
 
@@ -40,10 +40,10 @@ export default {
 
             // Twitter
             { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-            { hid: 'twitter:title', name: 'twitter:title', content: process.env.SITE_NAME },
+            { hid: 'twitter:title', name: 'twitter:title', content: process.env.SITE_TITLE },
             { hid: 'twitter:description', name: 'twitter:description', content: description },
             { hid: 'twitter:image', name: 'twitter:image', content: process.env.URL + image },
-            { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: process.env.SITE_NAME },
+            { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: process.env.SITE_TITLE },
 
             // MS Application Favicon
             { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#00aba9' },
