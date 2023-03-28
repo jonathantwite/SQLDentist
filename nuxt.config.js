@@ -114,6 +114,11 @@ export default {
         //         ignorePath: '.stylelintignore'
         //     })
         // ]
+        extend(config, { isDev, isClient }) {
+            config.node = {
+                fs: 'empty'
+            };
+        }
     },
 
     eslint: {
